@@ -29,10 +29,11 @@
 
 ## 其他不可见功能：
 启用jquery（AppUtils需要），jsBridge（app与网页连接桥），AppUtils（使用jsBridge的函数）
+
 双击屏幕显示“菜单”提示，点击显示菜单，防止app自定义菜单调用失败。
 
 ## 友链：
-app调试与集成js：https://bbs.binmt.cc/thread-151654-1-1.html
+app调试与集成js：https://bbs.binmt.cc/thread-150946-1-1.html
 
 使用mt管理器对app的修改：https://bbs.binmt.cc/thread-145359-1-1.html
 
