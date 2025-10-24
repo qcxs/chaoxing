@@ -1299,7 +1299,6 @@ class HomeworkProcessor {
     }
 }
 
-
 class AdvancedWebTool {
     constructor() {
         this.url = new URL(window.location.href).pathname
@@ -1365,7 +1364,7 @@ class AdvancedWebTool {
              */
             getAllAddress() {
                 const stored = localStorage.getItem(this.getKey());
-                return stored ? JSON.parse(stored) : [];
+                return stored ? JSON.parse(stored) : [{ remark: '添加位置' }];
             },
 
             /**
@@ -1386,13 +1385,6 @@ class AdvancedWebTool {
                     ToolClass.showTip('添加的记录必须是包含 name 属性的对象');
                 }
                 const Address = this.getAllAddress();
-                // 是否重复添加？
-                // const recordName = record.name;
-                // const isDuplicate = Address.some(item => item.name === recordName);
-                // if (isDuplicate) {
-                //     ToolClass.showTip(`"${recordName}" 已存在`);
-                //     return false; // 重复时返回 false
-                // }
                 Address.unshift(record);
                 this.saveAddress(Address);
             },
@@ -1424,9 +1416,12 @@ class AdvancedWebTool {
                 }
                 const Address = this.getAllAddress();
                 return Address.map((record, index) => ({
-                    name: (record.remark || '').trim().length > 0 ? record.remark : record.name,
+                    name: this.getshow(record),
                     callback: () => callback(index, record)
                 }));
+            },
+            getshow(record) {
+                return (record.remark || '').trim().length > 0 ? record.remark : record.name;
             }
         }
         //导入导出工具
@@ -1582,6 +1577,11 @@ class AdvancedWebTool {
                 window.location.href = url.href;
         `,
             })
+        } else if (this.url === '/pptTestPaperStu/startAnswer') {
+            itemChildren.unshift({
+                menu: '修改',
+                option: `openReEdit()`,
+            })
         }
 
 
@@ -1607,12 +1607,7 @@ class AdvancedWebTool {
                         menu: '位置库',
                         option: `this.showAdressList()`,
                     })
-                    itemChildren.push({
-                        menu: '添加位置',
-                        option: `this.addAddressDia()`,
-                    })
                 }
-
 
                 // 用立即执行函数包裹原option字符串，覆盖原值
                 itemChildren.forEach(item => {
@@ -1634,6 +1629,22 @@ class AdvancedWebTool {
     showAdressList() {
         //选择位置
         this.createSelectDialog(this.addressManager.getAddressMenuItems((index, address) => {
+            if (address.remark === '添加位置') {
+                try {
+                    const address = {
+                        name: $("#paramAddress").val() || $('#address').text() || '地址(教师端显示)',
+                        latitude: $("#latitude").val() || '纬度(数字)',
+                        longitude: $("#longitude").val() || '经度(数字)',
+                        remark: ''
+                    }
+                    this.createInputDialog('确认添加此位置？', (text) => {
+                        this.addressManager.addAddress(JSON.parse(text))
+                    }, address)
+                } catch (e) {
+                    ToolClass.print('发生错误' + e)
+                }
+                return
+            }
             // 对已选择的位置进行操作
             const menu = [{
                 name: '签到', callback: () => {
@@ -1641,7 +1652,7 @@ class AdvancedWebTool {
                         $("#paramAddress").val(address.name);
                         $("#latitude").val(address.latitude);
                         $("#longitude").val(address.longitude);
-                        // document.querySelector('#address').textContent = '已修改定位，请刷新(取消)或提交(使用记录)'
+                        //$('#address').text('已修改定位，请刷新(取消)或提交(使用记录)');
                         //自动提交
                         window.sign()
                     } catch (e) {
@@ -1657,33 +1668,21 @@ class AdvancedWebTool {
                     }, address.remark)
                 }
             }, {
-                name: '详情', callback: () => {
-                    ToolClass.print(address)
+                name: '编辑', callback: () => {
+                    this.createInputDialog('编辑', (text) => {
+                        this.addressManager.deleteAddress(index)
+                        this.addressManager.addAddress(JSON.parse(text))
+                    }, address)
                 },
             }, {
                 name: '删除', callback: () => {
                     this.addressManager.deleteAddress(index)
                 },
             }]
-            this.createSelectDialog(menu, '操作：')
+            this.createSelectDialog(menu, this.addressManager.getshow(address))
         }), '位置库：')
     }
-    addAddressDia() {
-        try {
-            const address = {
-                name: $("#paramAddress").val() || $('#address').text() || '地址(教师端显示)',
-                latitude: $("#latitude").val() || '纬度(数字)',
-                longitude: $("#longitude").val() || '经度(数字)',
-                remark: ''
-            }
-            this.createInputDialog('确认添加此位置？', (text) => {
-                this.addressManager.addAddress(JSON.parse(text))
-            }, address)
-        } catch (e) {
-            ToolClass.print('发生错误' + e)
-        }
 
-    }
     bindDblclickEvent() {
         document.addEventListener("dblclick", (e) => {
             // 阻止某元素内部双击冒泡
@@ -1866,8 +1865,8 @@ class AdvancedWebTool {
             // 3. 判断 key 是否以 'pptactive' 开头
             if (key.startsWith('pptactive')) {
                 // 4. 删除匹配的缓存
+                console.log(`已删除签到记录缓存：`, key, localStorage.getItem(key));
                 localStorage.removeItem(key);
-                console.log(`已删除签到记录缓存：${key}`);
             }
         });
     }
