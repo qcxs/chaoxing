@@ -10,6 +10,8 @@ app调试与集成js：https://bbs.binmt.cc/thread-150946-1-1.html
 
 使用mt管理器修改app：https://bbs.binmt.cc/thread-145359-1-1.html
 
+https://www.123684.com/s/o1cqVv-a1hjH
+
 # app.js
 专门适配app的纯js文件，包含：（部分功能在指定页面才显示）
 ## 网页加载后代码：
@@ -23,10 +25,11 @@ app调试与集成js：https://bbs.binmt.cc/thread-150946-1-1.html
 
 ## 位置签到：
 位置库：提供使用已保存位置签到，仅供学习交流。原理见：https://bbs.binmt.cc/thread-157986-1-1.html
+
 添加位置：可以在定位成功后添加位置，或者已签到导入。
 
 ## 导入导出选择判断：
-适配作业（仅新版PC作业，新版课程链接：https://mooc2-ans.chaoxing.com/mooc2-ans/visit/interaction）、考试、随堂练习
+适配作业、考试、随堂练习，PS：仅新版PC作业，新版课程链接：https://mooc2-ans.chaoxing.com/mooc2-ans/visit/interaction
 ### 导出json：
 包含题目、题目类型、题目id、题目选项（具体内容，非ABCD）、已选选项、答案选项。
 ### 导入json：
@@ -43,8 +46,6 @@ app调试与集成js：https://bbs.binmt.cc/thread-150946-1-1.html
 双击屏幕显示“菜单”提示，点击显示菜单，防止app自定义菜单调用失败。
 
 ## 友链：
-
-使用mt管理器对app的修改：https://bbs.binmt.cc/thread-145359-1-1.html
 
 学习通微信版（网页）：https://mooc1.chaoxing.com/course/phone/courselisthead
 
