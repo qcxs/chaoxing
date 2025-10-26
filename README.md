@@ -1,5 +1,15 @@
 # chaoxing
 针对超星学习通的自用文件
+
+# 如何使用？
+根据此教程修改app：
+
+app调试与集成js：https://bbs.binmt.cc/thread-150946-1-1.html
+
+或在此教程评论区下载成品：
+
+使用mt管理器修改app：https://bbs.binmt.cc/thread-145359-1-1.html
+
 # app.js
 专门适配app的纯js文件，包含：（部分功能在指定页面才显示）
 ## 网页加载后代码：
@@ -33,7 +43,6 @@
 双击屏幕显示“菜单”提示，点击显示菜单，防止app自定义菜单调用失败。
 
 ## 友链：
-app调试与集成js：https://bbs.binmt.cc/thread-150946-1-1.html
 
 使用mt管理器对app的修改：https://bbs.binmt.cc/thread-145359-1-1.html
 
