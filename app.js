@@ -3,7 +3,7 @@ class ToolClass {
     static tipTimeOut
     static TipElement;
 
-    static print(text, callback, title = '请输入内容：') {
+    static print(text, callback, title) {
         if (typeof text === 'object') text = JSON.stringify(text)
         // HTML转义函数
         function escapeHtml(unsafe) {
@@ -18,11 +18,11 @@ class ToolClass {
         // 判断是否为输入模式（有回调）
         const isInputMode = typeof callback === 'function';
 
-        // 构建弹窗HTML（动态切换按钮和内容区域属性）
+        // 构建弹窗HTML（动态切换按钮和内容区域）
         mask.innerHTML = `
 <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:15px;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.15);z-index:10000;width:80%;max-height:70%;min-height:200px;box-sizing:border-box;display:flex;flex-direction:column;">
   <span style="position:absolute;top:10px;right:15px;font-size:18px;cursor:pointer;color:#999" onclick="this.closest('div').parentNode.remove()">×</span>
-  <label style="display:block;margin:10px 0 8px;font-size:16px;font-weight:bold;color:#333">${isInputMode ? title : '查看或复制：'}</label>
+  <label style="display:block;margin:10px 0 8px;font-size:16px;font-weight:bold;color:#333">${title ? title : '查看或复制：'}</label>
   <div id="contentArea" style="overflow-y:auto;min-height:80px;white-space:pre-wrap;word-wrap:break-word;flex:1;${isInputMode ? 'user-modify: read-write; -webkit-user-modify: read-write; outline: none; cursor: text;' : ''}">${escapeHtml(text)}</div>
   <div style="margin-top:10px;text-align:right;">
     <button style="padding:5px 10px;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;margin-right:5px" onclick="this.closest('div').parentNode.parentNode.remove()">取消</button>
@@ -213,7 +213,7 @@ class ExamProcessor {
         this.examData = []; // 清空原有数据
         // 遍历每个题目容器
         Array.from(questionContainers).forEach(container => {
-            // 提取题目唯一ID（data属性值）
+            // 提取题目唯一ID（data值）
             const questionId = container.getAttribute('data') || 'unknown_id';
 
             // 提取题型
@@ -633,7 +633,7 @@ class InClassExerciseProcessor {
         if (valueFromCode.length > 0) return valueFromCode;
 
         // 情况3：处理选项值文本（直接匹配选项内容）
-        // 多选题可能包含多个用空格分隔的选项值（如"参与性原则 生活化原则"）
+        // 多选题可能包含多个用空格分隔的选项值
         const answerParts = questionType === '多选题'
             ? answer.split(/\s+/)
             : [answer];
@@ -1076,7 +1076,7 @@ class HomeworkProcessor {
      */
     _getQuestionType(container, isAnswering) {
         if (isAnswering) {
-            // 答题中：从typename属性获取
+            // 答题中：从typename获取
             return container.getAttribute('typename') || '未知题型';
         } else {
             // 批阅后：从标题<span>提取（如"(单选题)"）
@@ -1303,7 +1303,7 @@ class AdvancedWebTool {
     constructor() {
         this.url = new URL(window.location.href).pathname
         console.log(this.url)
-        // 类属性：存储实例和状态
+        // 类：存储实例和状态
         this.jsManager = {
             // 内置JS管理工具
             getUrlKey() {
@@ -1377,12 +1377,12 @@ class AdvancedWebTool {
 
             /**
              * 添加一条记录
-             * @param {Object} record - 要添加的记录对象（需包含 name 属性）
-             * @throws {Error} 如果传入的对象没有 name 属性则抛出错误
+             * @param {Object} record - 要添加的记录对象（需包含 name ）
+             * @throws {Error} 如果传入的对象没有 name 则抛出错误
              */
             addAddress(record) {
                 if (!record || typeof record !== 'object' || !('name' in record)) {
-                    ToolClass.showTip('添加的记录必须是包含 name 属性的对象');
+                    ToolClass.showTip('添加的记录必须是包含 name 的对象');
                 }
                 const Address = this.getAllAddress();
                 Address.unshift(record);
@@ -1620,6 +1620,22 @@ class AdvancedWebTool {
                     children: itemChildren
                 });
                 clearInterval(menu)
+
+                // 去除旧版本更新检测
+                AppUtils.isNewVersionNew = () => true
+                AppUtils.isNewVersion = () => true
+
+                // 强制通过app检测
+                AppUtils.isChaoXingStudy = () => true
+
+                if (window.checkClientSignatureSupport) {
+                    // 降级使用旧版本跳转页面，适配旧版本
+                    try {
+                        checkClientSignatureSupport = () => false
+                    } catch (error) {
+                        console.log(e)
+                    }
+                }
 
             }
 
