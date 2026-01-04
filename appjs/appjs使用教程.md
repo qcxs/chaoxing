@@ -3,12 +3,12 @@
 ## 高级
 
 当右上角显示“高级”时，可打开菜单
-![attachments/Pasted image 20251231112430.png](attachments\Pasted%20image%2020251231112430.png)
+![attachments/Pasted image 20251231112430.png](attachments/Pasted%20image%2020251231112430.png)
 
 ## 双击屏幕
 
 或者双击屏幕，点击菜单
-![attachments/Pasted image 20251231113111.png](attachments\Pasted%20image%2020251231113111.png)
+![attachments/Pasted image 20251231113111.png](attachments/Pasted%20image%2020251231113111.png)
 
 # 菜单功能
 
@@ -20,11 +20,11 @@
 ### 导入Str
 
 点击后显示题目
-![attachments/Pasted image 20251231112746.png](attachments\Pasted%20image%2020251231112746.png)
+![attachments/Pasted image 20251231112746.png](attachments/Pasted%20image%2020251231112746.png)
 内含提示词，点击复制并发送给豆包
-![attachments/Pasted image 20251231112845.png](attachments\Pasted%20image%2020251231112845.png)
+![attachments/Pasted image 20251231112845.png](attachments/Pasted%20image%2020251231112845.png)
 将结果粘贴至输入框
-![attachments/Pasted image 20251231112948.png](attachments\Pasted%20image%2020251231112948.png)
+![attachments/Pasted image 20251231112948.png](attachments/Pasted%20image%2020251231112948.png)
 点击确定后，自动选择选项。
 
 ### 导入json
@@ -64,7 +64,7 @@
 
 # 高级功能
 
-![attachments/Pasted image 20251231115228.png](attachments\Pasted%20image%2020251231115228.png)
+![attachments/Pasted image 20251231115228.png](attachments/Pasted%20image%2020251231115228.png)
 
 ## 修改
 
@@ -81,7 +81,7 @@
 ## 网页文字
 
 显示当前网页的文字，可一键复制，偷懒。
-![attachments/Pasted image 20251231115541.png](attachments\Pasted%20image%2020251231115541.png)
+![attachments/Pasted image 20251231115541.png](attachments/Pasted%20image%2020251231115541.png)
 
 ## 加载url
 
@@ -94,9 +94,9 @@
 ## 位置库
 
 在位置签到中使用，可以识别已签到位置，或者未签到时已获取位置，或直接为空由用户输入。
-![attachments/Pasted image 20251231120209.png](attachments\Pasted%20image%2020251231120209.png)
+![attachments/Pasted image 20251231120209.png](attachments/Pasted%20image%2020251231120209.png)
 添加后下次签到可一键签到，无需打开位置设置
-![attachments/Pasted image 20251231120441.png](attachments\Pasted%20image%2020251231120441.png)
+![attachments/Pasted image 20251231120441.png](attachments/Pasted%20image%2020251231120441.png)
 
 # 不可见功能
 
@@ -105,22 +105,22 @@
 ## 强兼其他网页
 
 由于显示[appjs使用教程 > 高级](appjs%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.md#gao-ji)需要js支持，很多网页并没有这些js，此时许多功能残废。使用以下代码向网页插入所需js，使得适配大多数网页。
-![attachments/Pasted image 20251231121311.png](attachments\Pasted%20image%2020251231121311.png)
+![attachments/Pasted image 20251231121311.png](attachments/Pasted%20image%2020251231121311.png)
 其中AppUtils依赖jsBridge依赖jQuery。
 
 ## 科技改变考试
 
 通过以下代码，可以去除考试需升级客户端检测。
-![attachments/Pasted image 20251231121159.png](attachments\Pasted%20image%2020251231121159.png)
+![attachments/Pasted image 20251231121159.png](attachments/Pasted%20image%2020251231121159.png)
 
 ## 优化体验
 
 允许切屏、填空题粘贴答案……
-![attachments/Pasted image 20251231121409.png](attachments\Pasted%20image%2020251231121409.png)
+![attachments/Pasted image 20251231121409.png](attachments/Pasted%20image%2020251231121409.png)
 允许复制题目，隐藏水印
-![attachments/Pasted image 20251231121604.png](attachments\Pasted%20image%2020251231121604.png)
-![attachments/Pasted image 20251231121716.png](attachments\Pasted%20image%2020251231121716.png)
+![attachments/Pasted image 20251231121604.png](attachments/Pasted%20image%2020251231121604.png)
+![attachments/Pasted image 20251231121716.png](attachments/Pasted%20image%2020251231121716.png)
 
 ## 去除签到记录
 
-![attachments/Pasted image 20251231121743.png](attachments\Pasted%20image%2020251231121743.png)
+![attachments/Pasted image 20251231121743.png](attachments/Pasted%20image%2020251231121743.png)
