@@ -193,6 +193,7 @@ class ToolClass {
     }
 }
 
+// 考试
 class ExamProcessor {
     constructor() {
         this.examData = []; // 存储解析后的试卷数据（仅含选择、判断题）
@@ -417,6 +418,7 @@ class ExamProcessor {
     }
 }
 
+// 课堂练习
 class InClassExerciseProcessor {
     constructor() {
         this.examData = []; // 存储解析后的数据（仅含选项值相关信息）
@@ -873,6 +875,7 @@ class InClassExerciseProcessor {
     }
 }
 
+// 作业
 class HomeworkProcessor {
     constructor() {
         this.homeworkData = []; // 存储解析后的数据（单选/判断/多选题核心信息）
@@ -1482,8 +1485,8 @@ class AdvancedWebTool {
         ];
 
         if (this.url === '/exam-ans/exam/phone/preview') {
-            //手机端整卷浏览
-            this.processor = new ExamProcessor();
+            //手机端整卷浏览，由于有严重bug，不再执行
+            // this.processor = new ExamProcessor();
         } else if (this.url === '/pptTestPaperStu/startAnswer' || this.url === '/widget/weixin/vote/stuVoteController/preVote' || this.url === '/pptTestPaperStu/reStartAnswerV2') {
             // 随堂练习，答题中、提交后、重新答题
             this.processor = new InClassExerciseProcessor();
