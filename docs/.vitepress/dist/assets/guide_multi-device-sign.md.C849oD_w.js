@@ -1,0 +1,34 @@
+import{_ as a,o as s,c as p,a0 as e}from"./chunks/framework.jwovEGr5.js";const i="/images/multi-device-sign/Pasted%20image%2020251230161200.png",t="/images/multi-device-sign/Pasted%20image%2020251230161428.png",l="/images/multi-device-sign/Pasted%20image%2020251230162003.png",c="/images/multi-device-sign/Pasted%20image%2020251230161937.png",h=JSON.parse('{"title":"一机多签","description":"","frontmatter":{},"headers":[],"relativePath":"guide/multi-device-sign.md","filePath":"guide/multi-device-sign.md"}'),o={name:"guide/multi-device-sign.md"};function r(g,n,d,v,m,u){return s(),p("div",null,[...n[0]||(n[0]=[e('<h1 id="一机多签" tabindex="-1">一机多签 <a class="header-anchor" href="#一机多签" aria-label="Permalink to &quot;一机多签&quot;">​</a></h1><p>在帮助同学签到时，常常发现不能在一台手机上多次签到，此处解决此问题。</p><p>搜索字符串 CLIENT_DEVICE_FLAG</p><p><img src="'+i+`" alt=""></p><p>找包含此特征的方法，新增 random 方法</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>.method public static randomS()Ljava/lang/String;</span></span>
+<span class="line"><span>    .registers 5</span></span>
+<span class="line"><span>    .prologue</span></span>
+<span class="line"><span>    .line 26</span></span>
+<span class="line"><span>    new-instance v1, Ljava/lang/StringBuilder;</span></span>
+<span class="line"><span>    invoke-direct {v1}, Ljava/lang/StringBuilder;-&gt;&lt;init&gt;()V</span></span>
+<span class="line"><span>    .line 27</span></span>
+<span class="line"><span>    const-string v2, &quot;0123456789abcdefghijklmnopqrstuvwxyz&quot;</span></span>
+<span class="line"><span>    .line 28</span></span>
+<span class="line"><span>    new-instance v3, Ljava/util/Random;</span></span>
+<span class="line"><span>    invoke-direct {v3}, Ljava/util/Random;-&gt;&lt;init&gt;()V</span></span>
+<span class="line"><span>    .line 29</span></span>
+<span class="line"><span>    const/4 v0, 0x0</span></span>
+<span class="line"><span>    :goto_d</span></span>
+<span class="line"><span>    const/16 v4, 0x10</span></span>
+<span class="line"><span>    if-ge v0, v4, :cond_23</span></span>
+<span class="line"><span>    .line 30</span></span>
+<span class="line"><span>    invoke-virtual {v2}, Ljava/lang/String;-&gt;length()I</span></span>
+<span class="line"><span>    move-result v4</span></span>
+<span class="line"><span>    invoke-virtual {v3, v4}, Ljava/util/Random;-&gt;nextInt(I)I</span></span>
+<span class="line"><span>    move-result v4</span></span>
+<span class="line"><span>    .line 31</span></span>
+<span class="line"><span>    invoke-virtual {v2, v4}, Ljava/lang/String;-&gt;charAt(I)C</span></span>
+<span class="line"><span>    move-result v4</span></span>
+<span class="line"><span>    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;-&gt;append(C)Ljava/lang/StringBuilder;</span></span>
+<span class="line"><span>    .line 29</span></span>
+<span class="line"><span>    add-int/lit8 v0, v0, 0x1</span></span>
+<span class="line"><span>    goto :goto_d</span></span>
+<span class="line"><span>    .line 33</span></span>
+<span class="line"><span>    :cond_23</span></span>
+<span class="line"><span>    invoke-virtual {v1}, Ljava/lang/StringBuilder;-&gt;toString()Ljava/lang/String;</span></span>
+<span class="line"><span>    move-result-object v0</span></span>
+<span class="line"><span>    return-object v0</span></span>
+<span class="line"><span>.end method</span></span></code></pre></div><p>复制当前类名</p><p><img src="`+t+'" alt=""></p><p>方法添加调用</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>invoke-static {}, 当前类名-&gt;randomS()Ljava/lang/String;</span></span></code></pre></div><p>参考代码</p><p><img src="'+l+'" alt=""></p><p><img src="'+c+'" alt=""></p><h2 id="原理" tabindex="-1">原理 <a class="header-anchor" href="#原理" aria-label="Permalink to &quot;原理&quot;">​</a></h2><p>详细需参考 <a href="https://bbs.binmt.cc/thread-157986-1-1.html" target="_blank" rel="noreferrer">学习通伪造位置签到</a>，服务器通过比较 deviceCode 判断是否为同一设备签到，此处将获取的 deviceCode 改为随机值。</p>',15)])])}const b=a(o,[["render",r]]);export{h as __pageData,b as default};
