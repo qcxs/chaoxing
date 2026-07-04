@@ -15,7 +15,7 @@
 npm install
 
 # 2. 启动本地开发服务器
-npm run docs:dev
+npm run dev
 
 # 3. 浏览器打开终端显示的地址（通常是 http://localhost:5173/chaoxing/）
 #    修改文件后浏览器会自动热更新
@@ -24,8 +24,8 @@ npm run docs:dev
 ### 构建生产版本
 
 ```bash
-npm run docs:build
-npm run docs:preview
+npm run build
+npm run preview
 ```
 
 ## 自动部署
